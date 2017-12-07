@@ -89,6 +89,8 @@ class Product: Equatable, Hashable {
             self.rating = rating as? String
             self.restaurantName = restaurantName as? String
             self.urlrelate = urlrelate as? String
+            let productPrice = dict["productPrice"]
+            self.productPrice = String(describing: productPrice)
          }
          
       } else {

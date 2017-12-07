@@ -75,12 +75,14 @@ class CartViewController: UIViewController {
                      return
                   }
                   let image = UIImage(data: data)
-                  self?.imageCatched.setObject(image!, forKey: urlString as AnyObject)
+                  if let image = image {
+                  self?.imageCatched.setObject(image, forKey: urlString as AnyObject)
                   
                   /* do some thing to cache image */
                   DispatchQueue.main.async {
                      cell.productImage.image = image
                   }
+                }
                }
             }
          }.addDisposableTo(disposeBag)

@@ -84,8 +84,7 @@ class ProductsViewController: UIViewController {
                   let productsRes = products.filter({ (product) -> Bool in
                      return  (product.addressName.contains(string) ||
                         product.productName.contains(string) ||
-                        product.productPrice!.contains(string) ||
-                        string == "")
+                        /*product.productPrice!.contains(string) ||*/string == "")
                   })
                   return .just(productsRes)
                }))!
@@ -112,12 +111,14 @@ class ProductsViewController: UIViewController {
                      return
                   }
                   let image = UIImage(data: data)
-                  self?.imageCatched.setObject(image!, forKey: urlString as AnyObject)
+                if let image = image {
+                  self?.imageCatched.setObject(image, forKey: urlString as AnyObject)
                   
                   /* do some thing to cache image */
                   DispatchQueue.main.async {
                      cell.imageProduct.image = image
                   }
+                }
                }
             }
          }.addDisposableTo(disposeBag)
